@@ -6,6 +6,8 @@ using Photon.Realtime;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
+    public int maxPlayers = 10;
+
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
