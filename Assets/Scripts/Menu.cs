@@ -95,6 +95,7 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         SetScreen(mainScreen);
     }
 
+    [PunRPC]
     private void UpdateLobbyUI()
     {
         // Enable Start Game only if Master Client
@@ -120,9 +121,6 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
     private void RoomButton_Click(string roomName)
     {
-        SetScreen(lobbyScreen);
-        UpdateLobbyUI(); // TODO make sure this updates that you joined the room as well
-
         NetworkManager.instance.JoinRoom(roomName);
     }
 
@@ -188,7 +186,8 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public override void OnJoinedRoom()
     {
         SetScreen(lobbyScreen);
-        UpdateLobbyUI();
+        photonView.RPC("UpdateLobbyUI", RpcTarget.All);
+        Debug.Log(PhotonNetwork.LocalPlayer.NickName + " joined " + PhotonNetwork.CurrentRoom.Name);
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
