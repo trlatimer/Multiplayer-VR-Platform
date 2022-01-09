@@ -10,8 +10,7 @@ public class VRCameraCharacterControllerFix : MonoBehaviour
 
     void FixedUpdate()
     {
-        place = new Vector3(centerEyeAnchor.transform.localPosition.x, 1.0f, centerEyeAnchor.transform.localPosition.z);
-
-        character.center = place;
+        place = new Vector3(centerEyeAnchor.transform.localPosition.x, 0, centerEyeAnchor.transform.localPosition.z);
+        character.center = place;      
     }
 }

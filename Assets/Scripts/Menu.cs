@@ -83,7 +83,7 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     #region Create Room Screen
     public void CreateRoomButton_Click(TMP_InputField roomName)
     {
-        // TODO: create room with room name via network manager
+        NetworkManager.instance.CreateRoom(roomName.text);
     }
 
     public void BackToMainButton_Click()
@@ -115,7 +115,7 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         SetScreen(lobbyScreen);
         UpdateLobbyUI(); // TODO make sure this updates that you joined the room as well
 
-        // TODO Join room, pass selectedRoomName
+        NetworkManager.instance.JoinRoom(selectedRoomName);
 
         selectedRoomName = "";
     }
@@ -172,7 +172,7 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         PhotonNetwork.CurrentRoom.IsOpen = false;
         PhotonNetwork.CurrentRoom.IsVisible = false;
 
-        // TODO Start the game - Should only be available to Master Client
+        NetworkManager.instance.photonView.RPC("ChangeScene", RpcTarget.All, "Game Scene");
     }
 
     public void LeaveButton_Click()
@@ -188,6 +188,13 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         // Enable menu buttons once we are connected
         createRoomButton.interactable = true;
         findRoomButton.interactable = true;
+        Debug.Log("Connected to Master");
+    }
+
+    public override void OnJoinedRoom()
+    {
+        SetScreen(lobbyScreen);
+        UpdateLobbyUI();
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)

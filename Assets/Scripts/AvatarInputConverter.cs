@@ -10,14 +10,17 @@ public class AvatarInputConverter : MonoBehaviour
     public Transform AvatarHead;
     public Transform AvatarBody;
 
-    public Transform AvatarHand_Left;
-    public Transform AvatarHand_Right;
+    // Character Controller
+    public CharacterController controller;
+
+   // public Transform AvatarHand_Left;
+    //public Transform AvatarHand_Right;
 
     //XRRig Transforms
     public Transform XRHead;
 
-    public Transform XRHand_Left;
-    public Transform XRHand_Right;
+    //public Transform XRHand_Left;
+    //public Transform XRHand_Right;
 
     public Vector3 headPositionOffset;
     public Vector3 handRotationOffset;
@@ -29,14 +32,15 @@ public class AvatarInputConverter : MonoBehaviour
     {
         //Head and Body synch
         MainAvatarTransform.position = Vector3.Lerp(MainAvatarTransform.position, XRHead.position + headPositionOffset, 0.5f);
+        controller.center = Vector3.Lerp(controller.center, XRHead.localPosition + new Vector3(headPositionOffset.x, headPositionOffset.y / 2, headPositionOffset.z), 0.5f);
         AvatarHead.rotation = Quaternion.Lerp(AvatarHead.rotation, XRHead.rotation, 0.5f);
         AvatarBody.rotation = Quaternion.Lerp(AvatarBody.rotation, Quaternion.Euler(new Vector3(0, AvatarHead.rotation.eulerAngles.y, 0)), 0.05f);
 
-        //Hands synch
-        AvatarHand_Right.position = Vector3.Lerp(AvatarHand_Right.position,XRHand_Right.position,0.5f);
-        AvatarHand_Right.rotation = Quaternion.Lerp(AvatarHand_Right.rotation,XRHand_Right.rotation,0.5f)*Quaternion.Euler(handRotationOffset);
+        ////Hands synch
+        //AvatarHand_Right.position = Vector3.Lerp(AvatarHand_Right.position,XRHand_Right.position,0.5f);
+        //AvatarHand_Right.rotation = Quaternion.Lerp(AvatarHand_Right.rotation,XRHand_Right.rotation,0.5f)*Quaternion.Euler(handRotationOffset);
 
-        AvatarHand_Left.position = Vector3.Lerp(AvatarHand_Left.position,XRHand_Left.position,0.5f);
-        AvatarHand_Left.rotation = Quaternion.Lerp(AvatarHand_Left.rotation,XRHand_Left.rotation,0.5f)*Quaternion.Euler(handRotationOffset);
+        //AvatarHand_Left.position = Vector3.Lerp(AvatarHand_Left.position,XRHand_Left.position,0.5f);
+        //AvatarHand_Left.rotation = Quaternion.Lerp(AvatarHand_Left.rotation,XRHand_Left.rotation,0.5f)*Quaternion.Euler(handRotationOffset);
     }
 }
