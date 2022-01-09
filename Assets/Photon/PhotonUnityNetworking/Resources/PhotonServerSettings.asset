@@ -16,7 +16,7 @@ MonoBehaviour:
     AppIdRealtime: d2234def-a818-4d73-83d3-4a91e831c29c
     AppIdFusion: 
     AppIdChat: 
-    AppIdVoice: 
+    AppIdVoice: aebf25a3-a205-40a5-ba94-2af5804f649e
     AppVersion: .1
     UseNameServer: 1
     FixedRegion: 
@@ -49,6 +49,11 @@ MonoBehaviour:
   - UpdateLobbyUI
   - StartNetworkGrabbing
   - StopNetworkGrabbing
+  - CantHearYou
+  - ChangeColour
+  - HeresWhy
+  - GiveAmmo
+  - SpawnBullet
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
