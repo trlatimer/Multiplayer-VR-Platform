@@ -29,7 +29,6 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
     private List<GameObject> roomButtons = new List<GameObject>();
     private List<RoomInfo> roomList = new List<RoomInfo>();
-    private string selectedRoomName = "";
 
     private void Start()
     {
@@ -78,6 +77,11 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     {
         SetScreen(createRoomScreen);
     }
+
+    public void PlayerName_Selected(TMP_InputField inputField)
+    {
+        TouchScreenKeyboard.Open(inputField.text, TouchScreenKeyboardType.Default);
+    }
     #endregion
 
     #region Create Room Screen
@@ -89,7 +93,6 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public void BackToMainButton_Click()
     {
         SetScreen(mainScreen);
-        selectedRoomName = "";
     }
 
     private void UpdateLobbyUI()
@@ -110,16 +113,6 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     #region Lobby Browser Screen
     // Use OnBackToMainButton_Click for the back button on this screen
 
-    public void JoinRoomButton_Click()
-    {
-        SetScreen(lobbyScreen);
-        UpdateLobbyUI(); // TODO make sure this updates that you joined the room as well
-
-        NetworkManager.instance.JoinRoom(selectedRoomName);
-
-        selectedRoomName = "";
-    }
-
     public void RefreshButton_Click()
     {
         UpdateLobbyBrowserUI();
@@ -127,7 +120,10 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
     private void RoomButton_Click(string roomName)
     {
-        selectedRoomName = roomName;
+        SetScreen(lobbyScreen);
+        UpdateLobbyUI(); // TODO make sure this updates that you joined the room as well
+
+        NetworkManager.instance.JoinRoom(roomName);
     }
 
     private GameObject CreateNewRoomButton()
@@ -139,8 +135,6 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
     private void UpdateLobbyBrowserUI()
     {
-        selectedRoomName = "";
-
         // Disable room buttons
         foreach (GameObject button in roomButtons)
             button.SetActive(false);
