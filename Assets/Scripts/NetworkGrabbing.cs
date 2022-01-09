@@ -28,12 +28,12 @@ public class NetworkGrabbing : MonoBehaviourPunCallbacks, IPunOwnershipCallbacks
         {
             // Object is being grapped
             rig.isKinematic = true;
-            gameObject.layer = 11;
+            gameObject.layer = 8;
         }
         else
         {
             rig.isKinematic = false;
-            gameObject.layer = 9;
+            gameObject.layer = 7;
         }
     }
 

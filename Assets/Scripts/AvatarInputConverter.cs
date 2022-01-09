@@ -13,19 +13,17 @@ public class AvatarInputConverter : MonoBehaviour
     // Character Controller
     public CharacterController controller;
 
-   // public Transform AvatarHand_Left;
-    //public Transform AvatarHand_Right;
+    public Transform AvatarHand_Left;
+    public Transform AvatarHand_Right;
 
     //XRRig Transforms
     public Transform XRHead;
 
-    //public Transform XRHand_Left;
-    //public Transform XRHand_Right;
+    public Transform XRHand_Left;
+    public Transform XRHand_Right;
 
     public Vector3 headPositionOffset;
     public Vector3 handRotationOffset;
-
-    
 
     // Update is called once per frame
     void Update()
@@ -37,10 +35,10 @@ public class AvatarInputConverter : MonoBehaviour
         AvatarBody.rotation = Quaternion.Lerp(AvatarBody.rotation, Quaternion.Euler(new Vector3(0, AvatarHead.rotation.eulerAngles.y, 0)), 0.05f);
 
         ////Hands synch
-        //AvatarHand_Right.position = Vector3.Lerp(AvatarHand_Right.position,XRHand_Right.position,0.5f);
-        //AvatarHand_Right.rotation = Quaternion.Lerp(AvatarHand_Right.rotation,XRHand_Right.rotation,0.5f)*Quaternion.Euler(handRotationOffset);
+        AvatarHand_Right.position = Vector3.Lerp(AvatarHand_Right.position, XRHand_Right.position, 0.5f);
+        AvatarHand_Right.rotation = Quaternion.Lerp(AvatarHand_Right.rotation, XRHand_Right.rotation, 0.5f) * Quaternion.Euler(handRotationOffset);
 
-        //AvatarHand_Left.position = Vector3.Lerp(AvatarHand_Left.position,XRHand_Left.position,0.5f);
-        //AvatarHand_Left.rotation = Quaternion.Lerp(AvatarHand_Left.rotation,XRHand_Left.rotation,0.5f)*Quaternion.Euler(handRotationOffset);
+        AvatarHand_Left.position = Vector3.Lerp(AvatarHand_Left.position, XRHand_Left.position, 0.5f);
+        AvatarHand_Left.rotation = Quaternion.Lerp(AvatarHand_Left.rotation, XRHand_Left.rotation, 0.5f) * Quaternion.Euler(handRotationOffset);
     }
 }

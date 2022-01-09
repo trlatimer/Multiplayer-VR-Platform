@@ -45,7 +45,7 @@ public class VRKeyboardManager : MonoBehaviour
 		keyboard.OnSubmit.AddListener(HandleSubmit);
 		keyboard.OnCancel.AddListener(HandleCancel);
 
-		keyboard.gameObject.transform.position = localVRPlayerCamera.transform.position + relativePosition;
+		//keyboard.gameObject.transform.position = localVRPlayerCamera.transform.localPosition + relativePosition;
 		AttachMarrets();
 
 		leftBaseController.GetComponent<XRRayInteractor>().enabled = false;
@@ -67,6 +67,7 @@ public class VRKeyboardManager : MonoBehaviour
 	}
 
 	void DetachMarrets()
+
 	{
 		leftMarret.transform.SetParent(null);
 		leftMarret.SetActive(false);
