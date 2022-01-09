@@ -1725,7 +1725,7 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 3
   OwnershipTransfer: 0
-  observableSearch: 2
+  observableSearch: 0
   ObservedComponents:
   - {fileID: 8451943839335102469}
   sceneViewId: 0
@@ -1785,7 +1785,6 @@ MonoBehaviour:
   maxHP: 50
   kills: 0
   dead: 0
-  rig: {fileID: 0}
   mr: {fileID: 6172879712865261107}
 --- !u!1 &8451943840339258983
 GameObject:

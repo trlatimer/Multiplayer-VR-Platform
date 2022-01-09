@@ -42,7 +42,7 @@ public class PlayerNetworkSetup : MonoBehaviourPunCallbacks
             //    }
             //}
 
-            MainAvatarGameObject.AddComponent<AudioListener>();
+            //MainAvatarGameObject.AddComponent<AudioListener>();
         }
         else
         {
