@@ -138,6 +138,11 @@ PlayerSettings:
   preloadedAssets:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 7851724290943332322, guid: 70a625c470847b04bad2071b12c0d203, type: 2}
+  - {fileID: -6503677132723904431, guid: aa77e1d4cb458604294bf3c9edd36c1a, type: 2}
+  - {fileID: 11400000, guid: 738d19704ca438a4e8d70f0ee367e820, type: 2}
+  - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -155,6 +160,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+    Android: com.TGKStudios.MultiplayerVR
     Standalone: com.TGKStudios.MultiplayerVR
   buildNumber:
     Standalone: 0
