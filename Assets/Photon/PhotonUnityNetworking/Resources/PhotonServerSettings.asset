@@ -37,6 +37,15 @@ MonoBehaviour:
   - ClickRpc
   - DestroyRpc
   - ChangeScene
+  - AddKill
+  - DamageFlash
+  - Die
+  - Heal
+  - ImInGame
+  - Initialize
+  - SpawnPlayer
+  - TakeDamage
+  - WinGame
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

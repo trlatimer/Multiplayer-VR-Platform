@@ -1684,6 +1684,7 @@ GameObject:
   - component: {fileID: 8451943839335102468}
   - component: {fileID: 8451943839335102469}
   - component: {fileID: 8451943839335102470}
+  - component: {fileID: 3060113247509978149}
   m_Layer: 0
   m_Name: VR Player
   m_TagString: Untagged
@@ -1767,6 +1768,25 @@ MonoBehaviour:
   - {fileID: 3653637840890810929, guid: 089d38c2beff1f044b446797593d7269, type: 3}
   MainAvatarGameObject: {fileID: 5277711432939288685}
   playerNameText: {fileID: 0}
+--- !u!114 &3060113247509978149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8451943839335102471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b353cd0780c1076428e1aea31eeb2ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  curHP: 50
+  maxHP: 50
+  kills: 0
+  dead: 0
+  rig: {fileID: 0}
+  mr: {fileID: 6172879712865261107}
 --- !u!1 &8451943840339258983
 GameObject:
   m_ObjectHideFlags: 0
