@@ -6,7 +6,7 @@ using Photon.Realtime;
 using TMPro;
 using UnityEngine.UI;
 
-public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
+public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 {
     [Header("Screens")]
     public GameObject mainScreen;

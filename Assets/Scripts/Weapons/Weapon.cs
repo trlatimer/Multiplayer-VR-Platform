@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class PlayerWeapon : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     [Header("Stats")]
     public int damage;

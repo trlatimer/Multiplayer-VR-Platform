@@ -20,7 +20,7 @@ public class NetworkManagerEditor : Editor
 
         if (GUILayout.Button("Start Game"))
         {
-            Menu menu = GameObject.FindObjectOfType<Menu>();
+            MainMenu menu = GameObject.FindObjectOfType<MainMenu>();
             menu.StartButton_Click();
         }
     }
