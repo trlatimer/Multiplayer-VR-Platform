@@ -12,12 +12,6 @@ public class GameMenu : MonoBehaviour
     public Button LeaveGameButton;
 
     public Canvas menuCanvas;
-    public NetworkManager networkManager;
-
-    public void Start()
-    {
-        networkManager = FindObjectOfType<NetworkManager>();
-    }
 
     #region Button Events
     public void CloseMenuButton_Click()
@@ -28,15 +22,15 @@ public class GameMenu : MonoBehaviour
     public void ExitGameButton_Click()
     {
         PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
-        networkManager.LeaveRoom();
+        NetworkManager.instance.LeaveRoom();
         Application.Quit();
     }
 
     public void LeaveGameButton_Click()
     {
         PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
-        networkManager.LeaveRoom();
-        networkManager.ChangeScene("Main Scene");
+        NetworkManager.instance.LeaveRoom();
+        NetworkManager.instance.ChangeScene("Main Scene");
     }
     #endregion
 }
