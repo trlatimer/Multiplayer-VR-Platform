@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviourPun
     public int kills;
     public bool dead;
 
+    public Weapon grabbedWeapon;
+
     private bool flashingDamage;
 
     [Header("Components")]
@@ -45,12 +47,14 @@ public class PlayerController : MonoBehaviourPun
         }
     }
 
-    private void Update()
+    public void TryShoot()
     {
         if (photonView.IsMine && !dead)
         {
-            //if (Input.GetMouseButtonDown(0))
-                //weapon.TryShoot();
+            if (grabbedWeapon != null)
+            {
+                grabbedWeapon.TryShoot();
+            }
         }
     }
 

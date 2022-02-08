@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Weapon : MonoBehaviour
 {
@@ -25,6 +26,27 @@ public class Weapon : MonoBehaviour
         photonView = GetComponent<PhotonView>();
     }
 
+    // When grabbed, we need to tell the PlayerController that we have a weapon so we can shoot
+    public void SetWeaponOwner(SelectEnterEventArgs selectEnterEventArgs)
+    {
+        PlayerController interactorController = selectEnterEventArgs.interactorObject.transform.gameObject.GetComponent<PlayerController>();
+        if (interactorController != null)
+        {
+            interactorController.grabbedWeapon = this;
+        }
+    }
+
+    // When dropped, we need to clear the weapon from the PlayerController so we don't continue shooting
+    public void ReleaseWeaponOwner(SelectExitEventArgs selectExitEventArgs)
+    {
+        PlayerController interactorController = selectExitEventArgs.interactorObject.transform.gameObject.GetComponent<PlayerController>();
+        if (interactorController != null)
+        {
+            interactorController.grabbedWeapon = null;
+        }
+    }
+
+    // Called from the XR Inputs if a weapon is currently grabbed
     public void TryShoot()
     {
         // Can we shoot?
