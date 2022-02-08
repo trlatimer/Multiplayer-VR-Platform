@@ -13,10 +13,20 @@ public class GameMenu : MonoBehaviour
 
     public Canvas menuCanvas;
 
+    public void OpenGameMenu()
+    {
+        menuCanvas.enabled = true;
+    }
+
+    public void CloseGameMenu()
+    {
+        menuCanvas.enabled = false;
+    }
+
     #region Button Events
     public void CloseMenuButton_Click()
     {
-        menuCanvas.enabled = false;
+        CloseGameMenu();
     }
 
     public void ExitGameButton_Click()
