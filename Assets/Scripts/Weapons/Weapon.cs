@@ -20,6 +20,7 @@ public class Weapon : MonoBehaviour
     public Transform bulletSpawnLocation;
 
     private PhotonView photonView;
+    private PlayerController currPlayer;
 
     private void Awake()
     {
@@ -29,9 +30,10 @@ public class Weapon : MonoBehaviour
     // When grabbed, we need to tell the PlayerController that we have a weapon so we can shoot
     public void SetWeaponOwner(SelectEnterEventArgs selectEnterEventArgs)
     {
-        PlayerController interactorController = selectEnterEventArgs.interactorObject.transform.gameObject.GetComponent<PlayerController>();
+        PlayerController interactorController = selectEnterEventArgs.interactorObject.transform.gameObject.GetComponentInParent<PlayerController>();
         if (interactorController != null)
         {
+            currPlayer = interactorController;
             interactorController.grabbedWeapon = this;
         }
     }
@@ -39,9 +41,10 @@ public class Weapon : MonoBehaviour
     // When dropped, we need to clear the weapon from the PlayerController so we don't continue shooting
     public void ReleaseWeaponOwner(SelectExitEventArgs selectExitEventArgs)
     {
-        PlayerController interactorController = selectExitEventArgs.interactorObject.transform.gameObject.GetComponent<PlayerController>();
+        PlayerController interactorController = selectExitEventArgs.interactorObject.transform.gameObject.GetComponentInParent<PlayerController>();
         if (interactorController != null)
         {
+            photonView = null;
             interactorController.grabbedWeapon = null;
         }
     }
@@ -59,7 +62,7 @@ public class Weapon : MonoBehaviour
         //GameUI.instance.UpdateAmmoText();
 
         // Spawn bullet
-        photonView.RPC("SpawnBullet", RpcTarget.All, bulletSpawnLocation.position, Camera.main.transform.forward);
+        photonView.RPC("SpawnBullet", RpcTarget.All, bulletSpawnLocation.position, transform.forward);
     }
 
     [PunRPC]
@@ -72,11 +75,8 @@ public class Weapon : MonoBehaviour
         // Get bullet script
         Bullet bulletScript =  bulletObj.GetComponent<Bullet>();
 
-        //Get the player
-        PlayerController player = photonView.gameObject.GetComponent<PlayerController>();
-
         // Init and set velocity
-        bulletScript.Initialize(damage, player.id, player.photonView.IsMine);
+        bulletScript.Initialize(damage, currPlayer.id, currPlayer.photonView.IsMine);
         bulletScript.rig.velocity = dir * bulletSpeed;
     }
 

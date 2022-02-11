@@ -42,7 +42,6 @@ public class NetworkGrabbing : MonoBehaviourPunCallbacks, IPunOwnershipCallbacks
 
     public void OnSelectEntered()
     {
-        Debug.Log("Grabbed");
         m_photonView.RPC("StartNetworkGrabbing", RpcTarget.AllBuffered);
 
         if (m_photonView.Owner != PhotonNetwork.LocalPlayer)
@@ -51,7 +50,6 @@ public class NetworkGrabbing : MonoBehaviourPunCallbacks, IPunOwnershipCallbacks
 
     public void OnSelectExited()
     {
-        Debug.Log("Dropped");
         m_photonView.RPC("StopNetworkGrabbing", RpcTarget.AllBuffered);
     }
 

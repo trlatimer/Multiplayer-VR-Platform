@@ -11,16 +11,14 @@ public class GameMenu : MonoBehaviour
     public Button ExitGameButton;
     public Button LeaveGameButton;
 
-    public Canvas menuCanvas;
-
     public void OpenGameMenu()
     {
-        menuCanvas.enabled = true;
+        this.gameObject.SetActive(true);
     }
 
     public void CloseGameMenu()
     {
-        menuCanvas.enabled = false;
+        this.gameObject.SetActive(false);
     }
 
     #region Button Events
@@ -31,14 +29,14 @@ public class GameMenu : MonoBehaviour
 
     public void ExitGameButton_Click()
     {
-        PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
+        //PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
         NetworkManager.instance.LeaveRoom();
         Application.Quit();
     }
 
     public void LeaveGameButton_Click()
     {
-        PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
+        //PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
         NetworkManager.instance.LeaveRoom();
         NetworkManager.instance.ChangeScene("Main Scene");
     }
