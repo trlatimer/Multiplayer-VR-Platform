@@ -8,6 +8,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 {
     public int maxPlayers = 10;
 
+    public Canvas menuCanvas;
+
     // instance
     public static NetworkManager instance;
 
